@@ -100,19 +100,6 @@ section { padding: var(--spacing-lg) 0; }
    4. COMPONENTES (BEM blocks)
    =============================== */
 /* Gradiente sutil para hero backgrounds */
-.hero {
-  background: linear-gradient(
-    135deg,
-    var(--primary-50) 0%,
-    var(--gray-50) 50%,
-    var(--primary-100) 100%
-  );
-}
-#hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--gray-800);
-}
 .card {
   flex: 1 1 300px;
   background: var(--surface);
