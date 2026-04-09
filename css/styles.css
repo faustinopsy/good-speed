@@ -1,0 +1,40 @@
+:root {
+/* Cores semânticas */
+--primary: #4f46e5;
+--text: #0f172a;
+--bg: #f8fafc;
+--surface: #ffffff;
+--border: #e2e8f0;
+/* Espaçamentos em escala geométrica */
+--spacing-xs: 0.25rem;  /* 4px */
+--spacing-sm: 0.5rem;   /* 8px */
+--spacing-md: 1rem;     /* 16px */
+--spacing-lg: 1.5rem;   /* 24px */
+--spacing-xl: 2rem;     /* 32px */
+/* Tipografia */
+--font-base: system-ui, -apple-system, sans-serif;
+--font-size-sm: 0.875rem;
+--font-size-base: 1rem;
+--font-size-lg: 1.125rem;
+}
+/* Tema padrão (claro) */
+:root {
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --primary: #4f46e5;
+  --surface: #ffffff;
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+  --bg: #020617;
+  --text: #f1f5f9;
+  --primary: #818cf8;
+  --surface: #0f172a;
+}
+/* Reset mínimo — menos de 200 bytes */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+input, button, textarea, select { font: inherit; }
+a { text-decoration: none; color: inherit; }
+
