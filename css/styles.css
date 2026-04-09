@@ -1,11 +1,8 @@
 /* ===============================
    1. RESET & BASE
    =============================== */
-/* Reset mínimo — menos de 200 bytes */
-*, *::before, *::after { box-sizing: border-box; margin: 0; }
-img { max-width: 100%; height: auto; display: block; }
-input, button, textarea, select { font: inherit; }
-a { text-decoration: none; color: inherit; }
+
+
 
 /* ===============================
    2. DESIGN TOKENS (variáveis)
@@ -117,6 +114,7 @@ section { padding: var(--spacing-lg) 0; }
     color: var(--gray-800);
 }
 .card {
+  flex: 1 1 300px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
