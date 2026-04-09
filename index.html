@@ -28,7 +28,7 @@
         .btn { background: var(--primary); }
         .navbar { position: fixed; height: 72px; }
         .hero {display: flex;align-items: center;justify-content: center;min-height: 100vh; background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);}
-        #hero-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #1e293b;
+        #hero-title, #contato-title,#servicos-title, #sobre-title, #footer-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #1e293b;
 }
         /* Estilos básicos para acessibilidade */
         .skip-link {position: absolute;top: -40px;left: 0;background: #000;color: #fff;padding: 8px;z-index: 100;}
@@ -98,9 +98,25 @@
       <h2 id="contato-title">Contato</h2>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2026 Sua Marca</p>
+  
+  <footer aria-label="rodape" class="footer__container">
+    <div class="footer__column">
+      <h3>Sobre Nós</h3>
+      <p>Descrição da empresa...</p>
+    </div>
+    <div class="footer__column">
+      <h3>Links Úteis</h3>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer__column">
+      <h3>Contato</h3>
+      <p>Email: contato@suamarca.com</p>
+      <p>Telefone: (11) 1234-5678</p>
+    </div>
   </footer>
   <script>
     const isDark = matchMedia("(prefers-color-scheme: dark)");

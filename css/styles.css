@@ -147,6 +147,19 @@ section { padding: var(--spacing-lg) 0; }
   border-color: var(--primary);
   box-shadow: 0 0 0 1px var(--primary);
 }
+.footer__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  background-color: var(--primary-900);
+}
+
+.footer__column {
+  flex: 1 1 200px;  /* Mínimo 200px, 3 colunas no desktop */
+}
+
 /* Modificador: card horizontal */
 .card--horizontal {
   display: grid;
