@@ -63,6 +63,15 @@ a { text-decoration: none; color: inherit; }
 --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
 --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
 --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+--font-sans: system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --font-serif: Georgia, "Times New Roman",
+    "Noto Serif", serif;
+
+  --font-mono: "Cascadia Code", "Fira Code",
+    ui-monospace, "SF Mono", "Roboto Mono", monospace;
+
 }
 /* Tema padrão (claro) */
 :root {
