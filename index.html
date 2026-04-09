@@ -17,13 +17,19 @@
     <meta name="twitter:image" content="https://www.example.com/image.jpg">
     <style>
         body { margin: 0; font-family: system-ui; }
-        .hero { min-height: 100vh; display: flex; }
+        .navbar { position: fixed; height: 72px; }
+        .hero { min-height: 90vh; display: grid; }
         h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
         /* Estilos básicos para acessibilidade */
         .skip-link {position: absolute;top: -40px;left: 0;background: #000;color: #fff;padding: 8px;z-index: 100;}
         .skip-link:focus {top: 0;}
     </style>
-    <link rel="stylesheet" href="/css/styles.css">
+    <!-- CSS NÃO-CRÍTICO: carrega sem bloquear -->
+    <link rel="preload" href="/css/styles.css" as="style"
+            onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/css/styles.css">
+    </noscript>
 </head>
 <body>
   <a href="#main" class="skip-link">Ir para conteúdo</a>
