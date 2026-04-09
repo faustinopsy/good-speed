@@ -39,7 +39,6 @@ a { text-decoration: none; color: inherit; }
 --success: #047857;
 --warning: #ea580c;
 --error:   #dc2626;
-
 /* Mapeamento semântico */
 --text:    var(--gray-900);
 --muted:   var(--gray-500);
@@ -55,9 +54,16 @@ a { text-decoration: none; color: inherit; }
 --spacing-xl: 2rem;     /* 32px */
 /* Tipografia */
 --font-base: system-ui, -apple-system, sans-serif;
---font-size-sm: 0.875rem;
---font-size-base: 1rem;
---font-size-lg: 1.125rem;
+--text-xs:  0.8rem;    /* 12.8px */
+--text-sm:  0.875rem;  /* 14px */
+--text-base: 1rem;     /* 16px */
+--text-lg:  1.125rem;  /* 18px */
+--text-xl:  1.25rem;   /* 20px */
+--text-2xl: 1.563rem;  /* 25px */
+--text-3xl: 1.953rem;  /* 31.2px */
+--text-4xl: 2.441rem;  /* 39px */
+--text-5xl: 3.052rem;  /* 48.8px */
+
 /* Escala de sombras reutilizável */
 --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
 --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
@@ -65,20 +71,10 @@ a { text-decoration: none; color: inherit; }
 --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
 --font-sans: system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-
   --font-serif: Georgia, "Times New Roman",
     "Noto Serif", serif;
-
   --font-mono: "Cascadia Code", "Fira Code",
     ui-monospace, "SF Mono", "Roboto Mono", monospace;
-
-}
-/* Tema padrão (claro) */
-:root {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --primary: #4f46e5;
-  --surface: #ffffff;
 }
 /* Tema escuro  via data-attribute */
 [data-theme="dark"] {
@@ -89,7 +85,15 @@ a { text-decoration: none; color: inherit; }
   --border:  var(--gray-700);
   --primary: var(--primary-400);
 }
-
+/* Sintaxe: clamp(mínimo, preferido, máximo) */
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+/*   Mobile: 32px | Tablet: ~5% da viewport | Desktop: 56px */
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+/*   Mobile: 24px | Tablet: ~4% da viewport | Desktop: 40px */
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+/*   Mobile: 20px | Tablet: ~3% da viewport | Desktop: 28px */
+body { font-size: clamp(0.875rem, 1.5vw, 1.125rem); }
+/*   Mobile: 14px | Desktop: 18px */
 /* ===============================
    3. LAYOUT (containers, grid)
    =============================== */
@@ -107,7 +111,11 @@ section { padding: var(--spacing-lg) 0; }
     var(--primary-100) 100%
   );
 }
-
+#hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--gray-800);
+}
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -164,4 +172,16 @@ section { padding: var(--spacing-lg) 0; }
    =============================== */
 .sr-only { /* acessibilidade */ }
 .text-center { text-align: center; }
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  letter-spacing: normal;
+  max-width: 65ch; /* Largura ideal: 45-75 caracteres */
+}
 
