@@ -39,7 +39,10 @@
     <noscript>
         <link rel="stylesheet" href="/css/styles.css">
     </noscript>
-    
+    <link rel="preload" href="/img/um.webp" as="image" >
+    <link rel="preload" href="/img/dois.webp" as="image" >
+    <link rel="preload" href="/img/tres.webp" as="image" >
+    <link rel="preload" href="/img/quatro.webp" as="image">
 </head>
 <body>
   <a href="#main" class="skip-link">Ir para conteúdo</a>
@@ -97,11 +100,32 @@
     <section class="gallery container" aria-labelledby="gallery-title" id="gallery">
       <h2 id="gallery-title">Galeria</h2>
         <div class="gallery__grid">
-            <img src="/img/um.webp" alt="Descrição da imagem 1" class="gallery__item" loading="lazy" >
-            <img src="/img/dois.webp" alt="Descrição da imagem 2" class="gallery__item" loading="lazy" >
-            <img src="/img/tres.webp" alt="Descrição da imagem 3" class="gallery__item" loading="lazy" >
-            <img src="/img/quatro.webp" alt="Descrição da imagem 4" class="gallery__item" loading="lazy" >
+            <img src="/img/um.webp" width="372" height="279" alt="Descrição da imagem 1" class="gallery__item" loading="lazy" >
+            <img src="/img/dois.webp" width="372" height="279" alt="Descrição da imagem 2" class="gallery__item" loading="lazy" >
+            <img src="/img/tres.webp" width="372" height="279" alt="Descrição da imagem 3" class="gallery__item" loading="lazy" >
+            <img src="/img/quatro.webp" width="372" height="279" alt="Descrição da imagem 4" class="gallery__item" loading="lazy" >
         </div>
+    </section>
+    <section class="depoimentos container" aria-labelledby="depoimentos-title" id="depoimentos">
+      <h2 id="depoimentos-title">Depoimentos</h2>
+      <div class="carousel" role="region" aria-label="Depoimentos dos clientes">
+        <blockquote class="carousel__item">
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac neque nec justo efficitur."</p>
+            <cite>- João Silva</cite>
+        </blockquote>
+        <blockquote class="carousel__item">
+            <p>"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."</p>
+            <cite>- Maria Oliveira</cite>
+        </blockquote>
+        <blockquote class="carousel__item">
+            <p>"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."</p>
+            <cite>- Maria Oliveira</cite>
+        </blockquote>
+        <blockquote class="carousel__item">
+            <p>"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."</p>
+            <cite>- Maria Oliveira</cite>
+        </blockquote>
+      </div>
     </section>
     <section class="contato container" aria-labelledby="contato-title" id="contato">
       <h2 id="contato-title">Contato</h2>

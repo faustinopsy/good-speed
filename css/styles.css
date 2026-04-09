@@ -116,6 +116,33 @@ section { padding: var(--spacing-lg) 0; }
   object-fit: cover;
   border-radius: 8px;
 }
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.carousel__item {
+  scroll-snap-align: center;
+  min-width: min(350px, 85vw);
+  flex-shrink: 0;
+}
+blockquote{
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    color: var(--muted);
+    font-style: italic;
+}
+cite{
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
 .card {
   flex: 1 1 300px;
   background: var(--surface);
