@@ -1,3 +1,15 @@
+/* ===============================
+   1. RESET & BASE
+   =============================== */
+/* Reset mínimo — menos de 200 bytes */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+input, button, textarea, select { font: inherit; }
+a { text-decoration: none; color: inherit; }
+
+/* ===============================
+   2. DESIGN TOKENS (variáveis)
+   =============================== */
 :root {
 /* Cores semânticas */
 --primary: #4f46e5;
@@ -24,7 +36,6 @@
   --primary: #4f46e5;
   --surface: #ffffff;
 }
-
 /* Tema escuro */
 [data-theme="dark"] {
   --bg: #020617;
@@ -32,14 +43,15 @@
   --primary: #818cf8;
   --surface: #0f172a;
 }
-/* Reset mínimo — menos de 200 bytes */
-*, *::before, *::after { box-sizing: border-box; margin: 0; }
-img { max-width: 100%; height: auto; display: block; }
-input, button, textarea, select { font: inherit; }
-a { text-decoration: none; color: inherit; }
-section { padding: var(--spacing-lg) 0; }
+
+/* ===============================
+   3. LAYOUT (containers, grid)
+   =============================== */
 .container { display: flex; flex-wrap: wrap; gap: var(--spacing-lg);width: 90%; max-width: 1200px; margin: 0 auto; }
-/*-------------- Seção de cards --------------------*/
+section { padding: var(--spacing-lg) 0; }
+/* ===============================
+   4. COMPONENTES (BEM blocks)
+   =============================== */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -82,4 +94,18 @@ section { padding: var(--spacing-lg) 0; }
   display: grid;
   grid-template-columns: 200px 1fr;
 }
+/* ===============================
+   5. UTILITÁRIOS
+   =============================== */
+.sr-only { /* acessibilidade */ }
+.text-center { text-align: center; }
+
+
+
+
+
+
+
+
+/*-------------- Seção de cards --------------------*/
 
