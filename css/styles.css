@@ -96,7 +96,7 @@ body { font-size: clamp(0.875rem, 1.5vw, 1.125rem); }
    =============================== */
 .container { display: flex; flex-wrap: wrap; gap: var(--spacing-lg);width: 90%; max-width: 1200px; margin: 0 auto; }
 section { padding: var(--spacing-lg) 0; }
-.sobre, .contato, .servicos {
+.sobre, .contato, .servicos,.gallery {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,6 +105,17 @@ section { padding: var(--spacing-lg) 0; }
    4. COMPONENTES (BEM blocks)
    =============================== */
 /* Gradiente sutil para hero backgrounds */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.gallery__item {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 8px;
+}
 .card {
   flex: 1 1 300px;
   background: var(--surface);

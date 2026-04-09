@@ -28,7 +28,7 @@
         .btn { background: var(--primary); }
         .navbar { position: fixed; height: 72px; }
         .hero {display: flex;align-items: center;justify-content: center;min-height: 100vh; background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);}
-        #hero-title, #contato-title,#servicos-title, #sobre-title, #footer-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #1e293b;}
+        #hero-title, #contato-title,#servicos-title, #sobre-title, #footer-title, #gallery-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #1e293b;}
         /* Estilos básicos para acessibilidade */
         .skip-link {position: absolute;top: -40px;left: 0;background: #000;color: #fff;padding: 8px;z-index: 100;}
         .skip-link:focus {top: 0;}
@@ -39,6 +39,7 @@
     <noscript>
         <link rel="stylesheet" href="/css/styles.css">
     </noscript>
+    
 </head>
 <body>
   <a href="#main" class="skip-link">Ir para conteúdo</a>
@@ -93,7 +94,15 @@
       <h2 id="sobre-title">Sobre Nós</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore a at consectetur tenetur consequuntur earum, rerum dignissimos eaque sed saepe, dicta illum architecto! Veritatis non asperiores quibusdam accusamus, dolorum deleniti?</p>
     </section>
-
+    <section class="gallery container" aria-labelledby="gallery-title" id="gallery">
+      <h2 id="gallery-title">Galeria</h2>
+        <div class="gallery__grid">
+            <img src="/img/um.webp" alt="Descrição da imagem 1" class="gallery__item" loading="lazy" >
+            <img src="/img/dois.webp" alt="Descrição da imagem 2" class="gallery__item" loading="lazy" >
+            <img src="/img/tres.webp" alt="Descrição da imagem 3" class="gallery__item" loading="lazy" >
+            <img src="/img/quatro.webp" alt="Descrição da imagem 4" class="gallery__item" loading="lazy" >
+        </div>
+    </section>
     <section class="contato container" aria-labelledby="contato-title" id="contato">
       <h2 id="contato-title">Contato</h2>
             <form class="form">
