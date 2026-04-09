@@ -86,6 +86,9 @@
   <footer>
     <p>&copy; 2026 Sua Marca</p>
   </footer>
+  <script>
+    const isDark = matchMedia("(prefers-color-scheme: dark)");
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+    </script>
 </body>
-
 </html>
