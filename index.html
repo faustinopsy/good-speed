@@ -15,23 +15,219 @@
     <meta name="twitter:title" content="Good Speed">
     <meta name="twitter:description" content="Good Speed - Fast and Reliable Internet Connection">
     <meta name="twitter:image" content="https://www.example.com/image.jpg">
+    <link rel="preload" as="image" href="/img/nolan.avif" type="image/avif" fetchpriority="high">
     <style>
-        /* Reset mínimo — menos de 200 bytes */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; }
-        img { max-width: 100%; height: auto; display: block; }
-        input, button, textarea, select { font: inherit; }
-        body { background: #ffffff; color: #ffffff; }
-        a { text-decoration: none; color: inherit; padding: 0.5rem; }
-        .navbar__container {display: flex;align-items: center;justify-content: space-between;height: 72px;padding: 0 5% 0 5%;background-color: #312e81;}
-        ul{display: flex;gap: 1.5rem;list-style: none;}
-        .logo {font-size: 1.5rem;font-weight: 700; color: var(--primary);}
-        .btn { background: var(--primary); }
-        .navbar { position: fixed; height: 72px; }
-        .hero {display: flex;align-items: center;justify-content: center;min-height: 100vh; background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);}
-        #hero-title, #contato-title,#servicos-title, #sobre-title, #footer-title, #gallery-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #1e293b;}
+/* Reset mínimo — menos de 200 bytes */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+input, button, textarea, select { font: inherit; }
+body { background: #ffffff; color: #ffffff; }
+a { text-decoration: none; color: inherit; padding: 0.5rem; }
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: #0404b17d;
+  backdrop-filter: blur(10px);
+  height: 72px;
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar__links a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar__links a:hover { color: var(--primary); }
+
+/* Esconde o hamburger no desktop */
+.navbar__burger { display: none; }
+.btn--cta {
+  background: #4338ca;
+  color: #fff;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.btn--cta:hover {
+  background: #175d10; /* Tom mais escuro */
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.btn--cta:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+.btn--outline{
+    background: transparent;
+    color: #ffffff;
+    padding: 0.625rem 1.5rem;
+    border: solid 2px #ffffff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+/* Mostra o hamburger apenas no mobile */
+@media (max-width: 768px) {
+  .navbar__links { display: none; }
+  .navbar__burger { display: flex; }
+}
+
+/* O menu mobile (overlay fullscreen) */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu--open {
+  transform: translateY(0);
+}
+
+.mobile-menu a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  min-height: 90vh;
+  padding: 6rem 2rem 4rem;
+  max-width: 100vw;
+  margin: 0 auto;
+  background:  #0404b1f2;
+  color: #ffffff;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.hero__highlight {
+  color: #fff;
+  display: inline;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #ffffff;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 5rem;
+  }
+  .hero__actions { justify-content: center; }
+}
+
+#contato-title,#servicos-title, #sobre-title, #footer-title, #gallery-title {font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #08419c;}
         /* Estilos básicos para acessibilidade */
         .skip-link {position: absolute;top: -40px;left: 0;background: #000;color: #fff;padding: 8px;z-index: 100;}
         .skip-link:focus {top: 0;}
+        html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Compensa a navbar fixa */
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #11014a;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* Estado de erro */
+.form-group--error input,
+.form-group--error textarea {
+  border-color: #dc2626;
+}
+
+.form-error {
+  font-size: 0.8rem;
+  color: #dc2626;
+  min-height: 1.2em; /* Reserva espaço (evita CLS) */
+}
+
+/* Sr-only (honeypot) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
     </style>
     <!-- CSS NÃO-CRÍTICO: carrega sem bloquear -->
     <link rel="preload" href="/css/styles.css" as="style"
@@ -46,47 +242,91 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Ir para conteúdo</a>
-
-  <header role="banner">
-    <nav aria-label="Navegação principal" class="navbar__container">
-      <!-- Logo + links de navegação -->
-        <a href="/">
-            <img src="/img/logo.svg" alt="Logo da empresa" width="80" height="48" class="logo">
+  <header class="header" role="banner">
+  <nav class="navbar" aria-label="Navegação principal">
+    <div class="navbar__container">
+      <!-- LOGO -->
+      <a href="/" class="navbar__logo" aria-label="Home">
+        <svg viewBox="0 0 120 40" width="120" height="40"
+            fill="none" aria-hidden="true">
+            <rect x="0" y="8" width="24" height="24" rx="4"
+                fill="var(--primary)"/>
+            <text x="32" y="28" font-family="system-ui"
+                font-weight="700" font-size="20"
+                fill="var(--text)">MeuSite</text>
+        </svg>
         </a>
-        <ul>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#sobre">Sobre Nós</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
-  </header>
-
+      <!-- LINKS (desktop) -->
+      <ul class="navbar__links" role="list">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato" class="btn btn--cta">
+          Agendar Consulta
+        </a></li>
+      </ul>
+      <!-- HAMBURGER (mobile) -->
+      <button class="navbar__burger"
+              aria-label="Abrir menu"
+              onclick="toggleMobileMenu(true)">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Título Principal</h1>
-    </section>
-
-    <section class="servicos container" aria-labelledby="servicos-title" id="servicos">
+  <div class="hero__content">
+    <h1 id="hero-title" class="hero__title">
+      Transformamos ideias em
+      <span class="hero__highlight">resultados digitais</span>
+    </h1>
+    <p class="hero__subtitle">
+      Sites de alta performance que convertem
+      visitantes em clientes.
+    </p>
+    <div class="hero__actions">
+      <a href="#contato" class="btn btn--cta">
+        Solicitar Orçamento
+      </a>
+      <a href="#portfolio" class="btn btn--outline">
+        Ver Portfólio
+      </a>
+    </div>
+  </div>
+  <div class="hero__image">
+    <picture>
+      <source srcset="/img/nolan.avif" type="image/avif">
+      <source srcset="/img/nolan.webp" type="image/webp">
+      <img src="/img/nolan.jpg"
+           alt="Omni man"
+           width="600" height="400"
+           fetchpriority="high"
+           decoding="async">
+    </picture>
+  </div>
+</section>
+<section class="servicos container" aria-labelledby="servicos-title" id="servicos">
       <h2 id="servicos-title">Nossos Serviços</h2>
       <div class="container">
       <!-- HTML com BEM -->
         <article class="card card--featured">
         <div class="card__image-wrapper">
-            <img class="card__image" src="" alt="imagem aquática" width="200px">
+            <img class="card__image" src="/img/quatro.webp" alt="imagem aquática" width="200px">
         </div>
         <div class="card__content">
             <h3 class="card__title">Título do Card</h3>
-            <p class="card__description">Descrição...</p>
+            <p class="card__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi dolores ex ipsam id magni accusamus nobis repudiandae temporibus eos velit nulla voluptatibus nisi debitis ipsum esse, atque reprehenderit eius! Provident.</p>
             <a class="card__link" href="#">Saiba mais</a>
         </div>
         </article>
         <article class="card card--featured">
         <div class="card__image-wrapper">
-            <img class="card__image" src="" alt="imagem aquática" width="200px">
+            <img class="card__image" src="/img/dois.avif" alt="imagem aquática" width="200px">
         </div>
         <div class="card__content">
             <h3 class="card__title">Título do Card</h3>
-            <p class="card__description">Descrição...</p>
+            <p class="card__description">Perspiciatis rem eum magni consequatur, officia consequuntur quidem reiciendis temporibus? Ad doloribus nostrum quibusdam asperiores cum, impedit voluptatem placeat deserunt aspernatur atque! </p>
             <a class="card__link" href="#">Saiba mais</a>
         </div>
         </article>
@@ -129,21 +369,71 @@
     </section>
     <section class="contato container" aria-labelledby="contato-title" id="contato">
       <h2 id="contato-title">Contato</h2>
-            <form class="form">
-                <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensagem:</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit">Enviar</button>
-            </form>
+            <form action="/api/contato" method="POST"
+      novalidate class="form">
+
+  <!-- Honeypot anti-spam (invisível) -->
+  <div class="sr-only" aria-hidden="true">
+    <input type="text" name="website_url"
+           tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- Campo Nome -->
+  <div class="form-group">
+    <label for="form-nome">Nome completo</label>
+    <input type="text" id="form-nome" name="nome"
+           required minlength="3" maxlength="100"
+           autocomplete="name"
+           placeholder="Seu nome">
+    <span class="form-error" aria-live="polite"></span>
+  </div>
+
+  <!-- Campo Email -->
+  <div class="form-group">
+    <label for="form-email">E-mail</label>
+    <input type="email" id="form-email" name="email"
+           required autocomplete="email"
+           placeholder="email@exemplo.com">
+    <span class="form-error" aria-live="polite"></span>
+  </div>
+
+  <!-- Campo Telefone -->
+  <div class="form-group">
+    <label for="form-tel">Telefone</label>
+    <input type="tel" id="form-tel" name="telefone"
+           autocomplete="tel"
+           placeholder="(11) 99999-9999"
+           pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}">
+    <span class="form-error" aria-live="polite"></span>
+  </div>
+
+  <!-- Campo Assunto (select) -->
+  <div class="form-group">
+    <label for="form-assunto">Assunto</label>
+    <select id="form-assunto" name="assunto" required>
+      <option value="">Selecione...</option>
+      <option value="orcamento">Orçamento</option>
+      <option value="suporte">Suporte</option>
+      <option value="outro">Outro</option>
+    </select>
+  </div>
+
+  <!-- Campo Mensagem -->
+  <div class="form-group">
+    <label for="form-msg">Mensagem</label>
+    <textarea id="form-msg" name="mensagem"
+              rows="5" required minlength="10"
+              placeholder="Como podemos ajudar?">
+    </textarea>
+    <span class="form-error" aria-live="polite"></span>
+  </div>
+
+  <!-- Botão Submit -->
+  <button type="submit" class="btn btn--primary-600">
+    Enviar Mensagem
+  </button>
+</form>
+
     </section>
   </main>
   
@@ -169,6 +459,16 @@
   <script>
     const isDark = matchMedia("(prefers-color-scheme: dark)");
     document.documentElement.dataset.theme = isDark ? "dark" : "light";
+    function toggleMobileMenu(open) {
+        const menu = document.getElementById("mobile-menu");
+        if (open) {
+            menu.classList.add("mobile-menu--open");
+            document.body.style.overflow = "hidden";
+        } else {
+            menu.classList.remove("mobile-menu--open");
+            document.body.style.overflow = "";
+        }
+        }
     </script>
 </body>
 </html>
