@@ -107,7 +107,7 @@ section { padding: var(--spacing-lg) 0; }
 /* Gradiente sutil para hero backgrounds */
 .gallery__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
   gap: 1rem;
 }
 .gallery__item {
@@ -154,7 +154,7 @@ cite{
     0 1px 3px rgba(0,0,0,0.04),
     0 4px 6px rgba(0,0,0,0.03),
     0 12px 24px rgba(0,0,0,0.02);
-
+position: relative;
 }
 .card:hover {
   transform: translateY(-4px);
@@ -174,7 +174,18 @@ cite{
   object-fit: cover;
 }
 .card__content {
-  padding: 1.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+.card__link{
+    position: absolute;
+    bottom: 0;
+    padding: 1.5rem 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 .card__title {
   font-size: 1.25rem;
@@ -240,7 +251,6 @@ li{
 /* ===============================
    5. UTILITÁRIOS
    =============================== */
-.sr-only { /* acessibilidade */ }
 .text-center { text-align: center; }
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
